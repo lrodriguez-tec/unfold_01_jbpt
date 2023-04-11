@@ -1,0 +1,26 @@
+digraph G {
+graph [fontname="Helvetica" fontsize="10" nodesep="0.35" ranksep="0.25 equally"];
+node [fontname="Helvetica" fontsize="10" fixedsize="true" style="filled" fillcolor="white" penwidth="2"];
+edge [fontname="Helvetica" fontsize="10" arrowhead="normal" color="black"];
+
+node [shape="circle"];
+	n29340f8e024740bfb857383ff86bee23[label="p2l" width=".3" height=".3"];
+	nc8f473509658450899cfbe89ed50dc45[label="p1l" width=".3" height=".3"];
+	n29df385e2c304eccad59000b591c1010[label="initialMarking[1]" width=".3" height=".3"];
+	n4476892f96fc44c0a8220d307084ebdb[label="p3l" width=".3" height=".3"];
+
+node [shape="box"];
+	n8889af1521174de79c0e408408a9f111[label="t1n" width=".3" height=".3"];
+	nffb9834700cc468ca35152e1c5b7b426[label="t3n" width=".3" height=".3"];
+	n25a034696b0b4be0b8ba84470d49c260[label="t2n" width=".3" height=".3"];
+	n59d9d98c66944a22b5433058aa43e77f[label="t0n" width=".3" fillcolor="#9ACD32" height=".3"];
+
+	n29340f8e024740bfb857383ff86bee23->n25a034696b0b4be0b8ba84470d49c260;
+	n29df385e2c304eccad59000b591c1010->n59d9d98c66944a22b5433058aa43e77f;
+	n29340f8e024740bfb857383ff86bee23->nffb9834700cc468ca35152e1c5b7b426;
+	n8889af1521174de79c0e408408a9f111->n29340f8e024740bfb857383ff86bee23;
+	n59d9d98c66944a22b5433058aa43e77f->nc8f473509658450899cfbe89ed50dc45;
+	nc8f473509658450899cfbe89ed50dc45->n8889af1521174de79c0e408408a9f111;
+	n25a034696b0b4be0b8ba84470d49c260->nc8f473509658450899cfbe89ed50dc45;
+	nffb9834700cc468ca35152e1c5b7b426->n4476892f96fc44c0a8220d307084ebdb;
+}
