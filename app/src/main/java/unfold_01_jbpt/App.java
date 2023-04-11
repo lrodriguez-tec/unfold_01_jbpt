@@ -37,16 +37,10 @@ public class App {
     	}
     	    	
     	NetSystem net = new PNMLSerializer().parse(filename);
-    	
-    	for(Transition t: net.getTransitions()) {
-    		System.out.println("Transition Id: [" + t.getId() + "]");
-    		System.out.println("Transition name: [" + t.getName() + "]");
-    		System.out.println("Transition des: [" + t.getDescription() + "]");
-    	}
-    	
     	IOUtils.toFile(filename + ".dot", net.toDOT());    	    	
     	
     	PetriNet pn = Convert_PetriNets.jbpt_to_hub(net);
+    	
     	NetSystem net2 = Convert_PetriNets.hub_to_jbpt(pn);
     	
     	IOUtils.saveDocumentToFile(PNMLSerializer.serialize(net2), "SalidaExito.pnml");

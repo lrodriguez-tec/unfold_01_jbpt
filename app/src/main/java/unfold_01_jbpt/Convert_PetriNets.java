@@ -20,13 +20,15 @@ public class Convert_PetriNets {
 		}
 		
 		for(org.jbpt.petri.Transition t: net.getTransitions()) {
-			pnet.addTransition( t.getName() );
-			System.out.println("Transition name: " + "[" + t.getName() + "]");
-			System.out.println("Transition desc: " + "[" + t.getDescription() + "]");
+			pnet.addTransition( t.getLabel() );
 		}
 		
-		for(org.jbpt.petri.Flow f: net.getFlow())
+		for(org.jbpt.petri.Flow f: net.getFlow()) {
+			System.out.println( "S: " + f.getSource().getName() + ":" + f.getSource().getLabel());
+			System.out.println( "T: " + f.getTarget().getName() + ":" + f.getSource().getLabel());
+			
 			pnet.addArc( f.getSource().getName(),  f.getTarget().getName());
+		}
 	
 		for(org.jbpt.petri.Place p: net.getSourcePlaces())
 			pnet.findPlace(p.getName()).setTokens(1);
@@ -67,9 +69,27 @@ public class Convert_PetriNets {
 	}
 	
 	private static Node find_node_by_name(String name, NetSystem net) {		
-		for(Node n: net.getNodes())
-			if(n.getName().equals( name ))
-				return n;
+		for(org.jbpt.petri.Place p: net.getPlaces())
+			if(p.getName().equals( name ))
+				return p;
+
+		for(org.jbpt.petri.Transition t: net.getTransitions())
+			if(t.getLabel().equals( name ))
+				return t;
+
+		System.out.println("Return null: [" + name + "]");
+		return null;
+	}
+	
+	private static hub.top.petrinet.Node find_node_by_name(String name, PetriNet pnet) {		
+		for(Place p: pnet.getPlaces())
+			if(p.getName().equals( name ))
+				return p;
+
+		for(Transition t: pnet.getTransitions())
+			if(t.getName().equals(name))
+				return t;
+
 		System.out.println("Return null: [" + name + "]");
 		return null;
 	}
